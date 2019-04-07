@@ -89,7 +89,7 @@ variable "health_check_grace_period_seconds" {
 }
 
 variable "tags" {
-  description = "A map of tags (key-value pairs) passed to resources"
+  description = "A map of tags assigned to managed resources"
   type        = "map"
   default     = {}
 }

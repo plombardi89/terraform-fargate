@@ -13,11 +13,11 @@ variable "application" {
 }
 
 variable "task_container_image" {
-  description = "A container image to run"
+  description = "A docker container image to run"
 }
 
 variable "task_container_port" {
-  description = "Port used by the container to expose itself"
+  description = "The port exposed by the container"
   default     = 8080
 }
 

@@ -21,10 +21,5 @@ resource "aws_subnet" "public" {
   availability_zone = "${element(sort(var.availability_zones), count.index)}"
   cidr_block        = "${cidrsubnet(var.cidr_block, 4, count.index)}"
   vpc_id            = "${aws_vpc.this.id}"
-  tags              = "${merge(var.tags, map("Name", "${var.name}-${format("public-%03d", count.index)}"))}"
-
-  //
-  //  tags {
-  //    Name = "${var.name}-${format("public-%03d", count.index)}"
-  //  }
+  tags              = "${merge(var.tags, map("Name", format("%s-public-%03d", var.name, count.index)))}"
 }

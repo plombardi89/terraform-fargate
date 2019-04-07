@@ -25,8 +25,7 @@ resource "aws_security_group" "this" {
   count  = "${var.type == "network" ? 0 : 1}"
   name   = "${local.name_prefix}-sg"
   vpc_id = "${var.vpc_id}"
-
-  tags = "${merge(var.tags, map("Name", "${local.name_prefix}-sg"))}"
+  tags   = "${merge(var.tags, map("Name", "${local.name_prefix}-sg"))}"
 }
 
 resource "aws_security_group_rule" "egress" {

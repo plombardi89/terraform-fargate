@@ -17,14 +17,15 @@ unfamiliar with the concept.
     - _(OPTIONAL)_ `region` should be the name of the AWS region to provision infrastructure in.
 2. Initialize Terraform: `terraform init -get -upgrade`. The configured Terraform backend is `local`.
 3. Plan the creation of managed resources `terraform plan -out tfplan`.
-4. Review the plan!
+4. Review the plan! It _should_ output `Plan: 27 to add, 0 to change, 0 to destroy.`
 5. Apply `terraform apply tfplan`
 
 # Poking the Deployed Service
 
 It takes a little bit of time for everything to spin up and for health checks to pass. Grab a cup of your preferred 
 caffeinated beverage then run `./whoami.sh`. If everything is running and health checks have passed then it should
-respond with: `I'm ip-10-0-11-188.us-east-2.compute.internal running on linux/amd64`
+respond with: `I'm ip-10-0-11-188.us-east-2.compute.internal running on linux/amd64`. If you are lazy like me run
+`watch -n2 ./whoami.sh` to automate the polling.
 
 **NOTE**
 
@@ -37,7 +38,7 @@ errors for a few moments:
 # Cleanup
 
 1. Plan the destruction of managed resources: `terraform plan -destroy -out tfplan`
-2. Review the plan!
+2. Review the plan! It _should_ output `Plan: 0 to add, 0 to change, 27 to destroy.`
 3. Apply the destroy plan: `terraform apply tfplan`
 
 # Architectural Considerations and Notes
