@@ -1,4 +1,4 @@
-# Fargate Terraform
+# Terraform Fargate
 
 Deploy a service on AWS Fargate.
 
@@ -14,7 +14,8 @@ unfamiliar with the concept.
 
 1. Open `terraform.tfvars` and set the following variable values:
     - **(REQUIRED)** `profile_name` is the name of the credential profile to use from a AWS Shared Credentials File.
-    - _(OPTIONAL)_ `region` should be the name of the AWS region to provision infrastructure in.
+    - _(OPTIONAL)_ `region` should be the name of the AWS region to provision infrastructure in. I have tested in 
+    `us-east-2` but any region that has at least three availability zones should be fine.
 2. Initialize Terraform: `terraform init -get -upgrade`. The configured Terraform backend is `local`.
 3. Plan the creation of managed resources `terraform plan -out tfplan`.
 4. Review the plan! It _should_ output `Plan: 27 to add, 0 to change, 0 to destroy.`
